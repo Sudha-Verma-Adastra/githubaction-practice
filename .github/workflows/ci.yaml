@@ -1,0 +1,19 @@
+name: Lint
+
+on:
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            - name: Setup Python
+              uses: actions/setup-python@v5
+            - name: Install flake
+              run: pip install flake8
+            - name: Lint with flake
+              run: flake8 src/
